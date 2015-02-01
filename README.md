@@ -10,6 +10,8 @@ This is a one day project which is the result of the need to generate a photo al
   * keywords filtering: photos can be filtered using keywords
   * not needed metadata is removed
 * can be included in wordpress using a custom plugin using a WordPress shortcode
+ 
+
 `[retroAlbum album="test"]
 This will include in the current post an album which is supposed to be found and $wordpress_site/photos/album
 
