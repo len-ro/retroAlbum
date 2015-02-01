@@ -1,6 +1,8 @@
 # Retro Album
 
-This is a one day project which is the result of the need to generate a photo album for my photos at the end of my photo processing workflow. It responds to the following functional needs:
+This is a one day project which is the result of the need to generate a photo album for my photos at the end of my photo processing workflow. Why retro? Because after searching for a day for the "right" album I decided it's better to write a simple one myself like in the old times, remember?
+
+It responds to the following functional needs:
 
 * generate a html photo album using a masonry responsive layout
 * understands photo metadata
