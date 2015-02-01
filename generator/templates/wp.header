@@ -1,0 +1,4 @@
+<div id="container" class="masonry">
+<!--
+<div id="container" class="masonry js-masonry" data-masonry-options='{ "gutter": 5, "itemSelector": ".item", "isFitWidth": true }'>
+-->
