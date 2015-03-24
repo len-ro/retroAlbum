@@ -88,7 +88,7 @@ def update_template(name, part, data, cache, filter = False):
 
     if filter and template.has_key('excludeKeys') and data.has_key('keywords'):
         for xk in template['excludeKeys']:
-            if xk in data['keywords']:
+            if data['keywords'] and xk in data['keywords']:
                 #log('Skip %s' % data)
                 return
 
