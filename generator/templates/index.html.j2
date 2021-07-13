@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<title>{{ albumName }}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="{{ albumDir }}/js/masonry.pkgd.min.js"></script>
+<script src="{{ albumDir }}/js/imagesloaded.pkgd.min.js"></script>
+<script src="{{ albumDir }}/js/jquery-3.5.1.min.js"></script>
+<script src="{{ albumDir }}/js/jquery.swipebox.min.js"></script>
+
+<link href="{{ albumDir }}/css/album.css" rel="stylesheet" type="text/css"/>
+<link href="{{ albumDir }}/css/swipebox.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="grid">
+{% for folder in folders %}
+<a class="grid-item folder" href="{{folder.name}}/index.html" title="{{ folder.name}}">{{ folder.name }}</a>
+{% endfor %}
+
+{% for image in images %}
+<a class="swipebox grid-item grid-item-{{ image.thumbSize[0] }}-{{ image.thumbSize[1] }}" href="{{ albumDir }}/{{ image.file }}"><img width="{{ image.thumbSize[0] }}" height="{{ image.thumbSize[1] }}" src="{{ albumDir }}/{{ image.thumbDir }}/{{ image.file }}" class="thumb"/></a>
+{% endfor %}
+</div>
+<script>
+var container = document.querySelector('.grid');
+var msnry;
+// initialize Masonry after all images have loaded
+ imagesLoaded( container, function() {
+  msnry = new Masonry(container, { "gutter": 5, "itemSelector": ".grid-item" });
+ });
+
+$( '.swipebox' ).swipebox();
+</script>
+</body>
+</html>

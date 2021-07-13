@@ -1,0 +1,17 @@
+{
+    "formats": ["JPG", "JPEG"],
+    "albumDir": "album",
+    "thumbDir": "thumbs",
+    "thumbSizeSmall": 160,
+    "thumbSizeLarge": 326,
+    "ratingLargeThumb": 2,
+    "imageSize": 2000,
+    "thumbOffset": 13,
+    "exif": {
+        "captionKeys": ["Exif.Image.ImageDescription", "Iptc.Application2.Caption"],
+        "ratingKeys": ["Xmp.xmp.Rating"],
+        "tagsKeys": ["Xmp.dc.subject", "Iptc.Application2.Keywords"],
+        "dateKeys": ["Exif.Photo.DateTimeOriginal"],
+        "keepKeys": ["Exif.Image.Artist", "Exif.Image.Copyright", "Iptc.Application2.Copyright", "Xmp.dc.creator"]
+    }
+}

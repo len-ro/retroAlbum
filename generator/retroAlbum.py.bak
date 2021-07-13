@@ -61,8 +61,8 @@ def thumbSquare(basePath, thumbPath, rating):
 thumb = thumbSquare
 
 templates = {
-    'index':{'name':'index', 'oFile':'index.html', 'excludeKeys':['private']}, 
-    'wp':{'name':'wp', 'oFile':'album.inc', 'excludeKeys':['private']},
+    'index':{'name':'index', 'oFile':'index.html', 'excludeKeys':[u'private']}, 
+    'wp':{'name':'wp', 'oFile':'album.inc', 'excludeKeys':[u'private']},
     'private':{'name':'index', 'oFile':'%s.html' % (str(uuid.uuid4())[-8:])}
 }
 
@@ -86,13 +86,13 @@ def write_templates(albumPath):
 def update_template(name, part, data, cache, filter = False):
     template = templates[name]
 
-    if filter and 'excludeKeys' in template and 'keywords' in data:
+    if filter and template.has_key('excludeKeys') and data.has_key('keywords'):
         for xk in template['excludeKeys']:
             if data['keywords'] and xk in data['keywords']:
                 #log('Skip %s' % data)
                 return
 
-    if cache and 'cache.%s' % part in template:
+    if cache and template.has_key('cache.%s' % part):
         output = template['cache.%s' % part]
     else:
         tPath = os.path.join(template['basePath'], '%s.%s' % (template['name'], part))
@@ -101,7 +101,7 @@ def update_template(name, part, data, cache, filter = False):
     if data:
         output = output % data
 
-    if 'output' not in template:
+    if not template.has_key('output'):
         template['output'] = output
     else:
         template['output'] = template['output'] + output
@@ -145,7 +145,7 @@ def parse(dir):
 
                 log('Processing %s to %s' % (fullPath, thumbPath))
 
-                metadata = pyexiv2.metadata.ImageMetadata(fullPath)
+                metadata = pyexiv2.ImageMetadata(fullPath)
                 metadata.read()
                 
                 caption = get_exif_tag(metadata, exifCaptionKeys)
@@ -222,7 +222,7 @@ def init_dir(basePath, albumPath):
     copytree(basePath, albumPath)
 
 def log(msg):
-    print(msg)
+    print msg
 
 if __name__ == "__main__":
     albumPath = sys.argv[1]
